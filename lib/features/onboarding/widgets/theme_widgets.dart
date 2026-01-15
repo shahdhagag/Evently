@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:evently/core/utiles/app_assets.dart';
 import 'package:evently/core/utiles/app_colors.dart';
 import 'package:evently/core/utiles/app_styles.dart';
@@ -13,7 +14,7 @@ class ThemeWidget extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text("Theme",style: AppStyles.bold18mainColor),
+        Text("Theme".tr(),style: AppStyles.bold18mainColor),
         Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [

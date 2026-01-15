@@ -1,5 +1,10 @@
 {
   "hallow": "helow world",
   "onboardTitle": "Personalize Your Experience",
-  "onboardSubTitle": "Choose your preferred theme and language to get started with a comfortable, tailored experience that suits your style."
+  "onboardSubTitle": "Choose your preferred theme and language to get started with a comfortable, tailored experience that suits your style.",
+  "Language": "Language",
+  "English": "English",
+  "Arabic": "Arabic",
+  "Let's Start":  "Let's Start",
+  "Theme": "Theme"
 }

@@ -5,13 +5,17 @@ import 'package:evently/core/utiles/app_assets.dart';
 import 'package:evently/core/utiles/app_styles.dart';
 import 'package:evently/features/onboarding/widgets/language_widgets.dart';
 import 'package:evently/features/onboarding/widgets/theme_widgets.dart';
+import 'package:evently/providers/app_language_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:provider/provider.dart';
 class OnboardingScreen extends StatelessWidget {
   const OnboardingScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final provider = Provider.of<AppLanguageProvider>(context);
+    Locale current = provider.appLanguage;
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16.0),
@@ -27,9 +31,10 @@ class OnboardingScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("onboardTitle".tr(),style: AppStyles.bold20black),
+
+                Text("onboardTitle".tr(), style: AppStyles.bold20black),
                 Gap(8),
-                Text("Choose your preferred theme and language to get started with a comfortable, tailored experience that suits your style.",style: AppStyles.normal16black,),
+                Text("onboardSubTitle".tr(), style: AppStyles.normal16black),
 
 
               ],
@@ -39,7 +44,7 @@ class OnboardingScreen extends StatelessWidget {
             Gap(16),
             ThemeWidget(),
             Gap(33),
-            CustomButton(title:  "Let's Start",),
+            CustomButton(title:  "Let's Start".tr(),),
 
 
 

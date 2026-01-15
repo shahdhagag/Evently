@@ -1,20 +1,21 @@
-import 'package:easy_localization/easy_localization.dart';
-import 'package:evently/core/utiles/app_route.dart';
-import 'package:evently/core/utiles/app_theme.dart';
-import 'package:evently/providers/app_language_provider.dart';
 import 'package:flutter/material.dart';
-import 'features/home/home_screen.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:provider/provider.dart';
+import 'providers/app_language_provider.dart';
+import 'features/home/home_screen.dart';
+import 'core/utiles/app_route.dart';
+import 'core/utiles/app_theme.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
+
   runApp(
     EasyLocalization(
-      supportedLocales: [Locale('en', 'US'), Locale('ar', 'EG')],
-      path: 'assets/translations',
-      fallbackLocale: Locale('en', 'US'),
-      startLocale: Locale('ar', 'EG'),
+      supportedLocales: const [Locale('en', 'US'), Locale('ar', 'EG')],
+      path: 'assets/translations', // path to your JSON translation files
+      fallbackLocale: const Locale('en', 'US'), // default if translation missing
+      startLocale: const Locale('ar', 'EG'), // starting language
 
       child: ChangeNotifierProvider(
         create: (context) => AppLanguageProvider(),
@@ -29,7 +30,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var appProvider=Provider.of<AppLanguageProvider>(context);
+    // Access the provider to get current language
+    var appProvider = Provider.of<AppLanguageProvider>(context);
 
     return MaterialApp.router(
       routerConfig: AppRouts.router,
@@ -37,7 +39,7 @@ class MyApp extends StatelessWidget {
       title: 'Evently',
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,
-      locale: appProvider.appLanguage,
+      locale: appProvider.appLanguage, // Use provider's current language
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
       themeMode: ThemeMode.system,
