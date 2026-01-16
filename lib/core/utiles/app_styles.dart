@@ -17,7 +17,6 @@ class AppStyles{
       fontSize: 16,
       color: AppColors.lightSecText,
       fontWeight: FontWeight.normal,
-    fontFamily: "Poppins",
   );
   static const medium20white = TextStyle(
     color: AppColors.lightInput,

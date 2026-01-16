@@ -2,13 +2,16 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:evently/core/shared/custom_button.dart';
 import 'package:evently/core/shared/evently_header.dart';
 import 'package:evently/core/utiles/app_assets.dart';
+import 'package:evently/core/utiles/app_route.dart';
 import 'package:evently/core/utiles/app_styles.dart';
+import 'package:evently/features/onboarding/onboarding_screens.dart';
 import 'package:evently/features/onboarding/widgets/language_widgets.dart';
 import 'package:evently/features/onboarding/widgets/theme_widgets.dart';
 import 'package:evently/providers/app_language_provider.dart';
 import 'package:evently/providers/app_theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 class OnboardingScreen extends StatelessWidget {
   const OnboardingScreen({super.key});
@@ -57,11 +60,12 @@ class OnboardingScreen extends StatelessWidget {
             ThemeWidget(),
             Gap(21),
             CustomButton(
-              title:  "Let's Start".tr(),
+              title: "Let's Start".tr(),
               onTap: () {
-
+                context.go(AppRouts.onboardingScreens);
               },
             ),
+
 
 
 
