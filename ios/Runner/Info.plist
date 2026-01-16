@@ -10,8 +10,8 @@
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleLocalizations</key>
     <array>
-    	<string>en</string>
-    	<string>nb</string>
+    	<string>en-US</string>
+    	<string>ar-EG</string>
     </array>
 	<key>CFBundleIdentifier</key>
 	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>

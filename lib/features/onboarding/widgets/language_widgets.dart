@@ -1,4 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:evently/providers/app_theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:evently/providers/app_language_provider.dart';
@@ -13,56 +14,80 @@ class LanguageWidget extends StatelessWidget {
     final provider = Provider.of<AppLanguageProvider>(context);
     Locale current = provider.appLanguage;
 
+    final themeProvider = Provider.of<AppThemeProvider>(context);
+    final bool isDark = themeProvider.isDarkMode();
+
+    // Helper function to get colors based on selection & theme
+    Color getBackgroundColor(String code) {
+      if (current.languageCode == code) {
+        return isDark ? AppColors.darkPrimary : AppColors.lightPrimary;
+      } else {
+        return isDark ? AppColors.darkInput : AppColors.lightInput;
+      }
+    }
+
+    Color getTextColor(String code) {
+      if (current.languageCode == code) {
+        return isDark ? AppColors.lightInput : AppColors.lightInput;
+      } else {
+        return isDark ? AppColors.lightInput : AppColors.lightPrimary;
+      }
+    }
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text("Language".tr(), style: AppStyles.bold18mainColor),
+        Text(
+          "Language".tr(),
+          style: isDark
+              ? AppStyles.medium20white
+              : AppStyles.bold18mainColor.copyWith(fontSize: 20),
+        ),
+
         Row(
           children: [
-            // English button
-            GestureDetector(
-              onTap: () =>
-                  provider.changeLanguage(const Locale('en', 'US'), context),
-              child: Container(
+            /// English Button
+            ElevatedButton(
+              onPressed: () {
+                provider.changeLanguage(const Locale('en', 'US'), context);
+              },
+              style: ElevatedButton.styleFrom(
+                elevation: 0,
+                backgroundColor: getBackgroundColor('en'),
                 padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
-                decoration: BoxDecoration(
+                shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8),
-                  color: current.languageCode == 'en'
-                      ? AppColors.lightPrimary
-                      : AppColors.lightInput,
                 ),
-                child: Text(
-                  "English".tr(),
-                  style: TextStyle(
-                    color: current.languageCode == 'en'
-                        ? AppColors.lightInput
-                        : AppColors.lightPrimary,
-                    fontSize: 14,
-                  ),
+              ),
+              child: Text(
+                "English".tr(),
+                style: TextStyle(
+                  fontSize: 14,
+                  color: getTextColor('en'),
                 ),
               ),
             ),
+
             const SizedBox(width: 10),
-            // Arabic button
-            GestureDetector(
-              onTap: () =>
-                  provider.changeLanguage(const Locale('ar', 'EG'), context),
-              child: Container(
+
+            /// Arabic Button
+            ElevatedButton(
+              onPressed: () {
+                provider.changeLanguage(const Locale('ar', 'EG'), context);
+              },
+              style: ElevatedButton.styleFrom(
+                elevation: 0,
+                backgroundColor: getBackgroundColor('ar'),
                 padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
-                decoration: BoxDecoration(
+                shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8),
-                  color: current.languageCode == 'ar'
-                      ? AppColors.lightPrimary
-                      : AppColors.lightInput,
                 ),
-                child: Text(
-                  "Arabic".tr(),
-                  style: TextStyle(
-                    color: current.languageCode == 'ar'
-                        ? AppColors.lightInput
-                        : AppColors.lightPrimary,
-                    fontSize: 14,
-                  ),
+              ),
+              child: Text(
+                "Arabic".tr(),
+                style: TextStyle(
+                  fontSize: 14,
+                  color: getTextColor('ar'),
                 ),
               ),
             ),

@@ -1,5 +1,5 @@
 import 'package:evently/features/onboarding/onborading1.dart';
-import 'package:evently/features/splash_screen.dart';
+import 'package:evently/splash_screen.dart';
 import 'package:go_router/go_router.dart';
 
 class AppRouts {
