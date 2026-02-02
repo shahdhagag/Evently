@@ -420,7 +420,6 @@ class _AddEventScreenState extends State<AddEventScreen> {
     if (choosedDate != null) {
       setState(() {
         selectedDate = choosedDate;
-        // Always format using English locale internally for consistency
         formattedDate = DateFormat('MMMM dd, yyyy', 'en').format(selectedDate!);
       });
     }
@@ -526,16 +525,16 @@ class _AddEventScreenState extends State<AddEventScreen> {
       return;
     }
 
-    final englishEventName = getEnglishEventName(selectedEventsName); // 🔹 convert to English key
+    final englishEventName = getEnglishEventName(selectedEventsName);
 
     final updatedEvent = EventModel(
       id: widget.eventToEdit!.id,
       date: selectedDate!,
       title: titleController.text.trim(),
       description: descController.text.trim(),
-      eventName: englishEventName, // 🔹 use English key here
+      eventName: englishEventName,
       eventImage: selectedEventImage,
-      time: formattedTime, // Stored in English digits
+      time: formattedTime,
       isFavorite: widget.eventToEdit!.isFavorite,
       userUid: FirebaseAuth.instance.currentUser!.uid,
     );

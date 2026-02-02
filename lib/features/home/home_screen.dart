@@ -4,12 +4,10 @@ import 'package:evently/features/favourite/favourite_screen.dart';
 import 'package:evently/features/home/home_tab.dart';
 import 'package:evently/features/profile/profile_screen.dart';
 import 'package:evently/providers/app_theme_provider.dart';
-import 'package:evently/providers/event_list_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
-import 'dart:ui' as ui; // <-- makes ui.TextDirection available
-import 'package:flutter/material.dart'; // includes correct TextDirection
+import 'dart:ui' as ui;
 
 
 class HomeScreen extends StatefulWidget {
@@ -40,14 +38,13 @@ class _HomeScreenState extends State<HomeScreen> {
     final themeProvider = Provider.of<AppThemeProvider>(context);
     final isDark = themeProvider.isDarkMode();
 
-    // Determine if current locale is Arabic
     final isRtl = context.locale.languageCode == 'ar';
 
     return Directionality(
-      key: ValueKey(isRtl), // forces rebuild when language changes
+      key: ValueKey(isRtl),
       textDirection: isRtl
           ? ui.TextDirection.rtl
-          : ui.TextDirection.ltr, // ui from dart:ui
+          : ui.TextDirection.ltr,
       child: Scaffold(
         body: screens[currentIndex],
 
