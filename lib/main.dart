@@ -29,7 +29,7 @@ void main() async {
       supportedLocales: const [Locale('en', 'US'), Locale('ar', 'EG')],
       path: 'assets/translations',
       fallbackLocale: const Locale('en', 'US'),
-      startLocale: const Locale('ar', 'EG'),
+      startLocale: const Locale('en', 'US'),
       child: MultiProvider(
         providers: [
           ChangeNotifierProvider(create: (context) => AppLanguageProvider()),

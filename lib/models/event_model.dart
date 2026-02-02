@@ -14,7 +14,7 @@ class EventModel {
   final String eventName;
   bool isFavorite;
   String userUid;
-  Timestamp lastUpdated; // ✅ must be non-null
+  Timestamp lastUpdated;
 
   EventModel({
     this.id = '',
@@ -26,8 +26,8 @@ class EventModel {
     this.isFavorite = false,
     required this.time,
     required this.userUid,
-    Timestamp? lastUpdated, // optional input
-  }) : lastUpdated = lastUpdated ?? Timestamp.now(); // set to now if null
+    Timestamp? lastUpdated,
+  }) : lastUpdated = lastUpdated ?? Timestamp.now();
 
   /// json => object
   EventModel.fromJson(Map<String, dynamic> json)
@@ -54,7 +54,7 @@ class EventModel {
       'isFavorite': isFavorite,
       'time': time,
       'userUid': userUid,
-      'lastUpdated': lastUpdated, // ✅ include lastUpdated
+      'lastUpdated': lastUpdated,
     };
   }
 
@@ -79,7 +79,7 @@ class EventModel {
       eventImage: eventImage ?? this.eventImage,
       isFavorite: isFavorite ?? this.isFavorite,
       userUid: userUid,
-      lastUpdated: lastUpdated ?? Timestamp.now(), // 🔥 important!
+      lastUpdated: lastUpdated ?? Timestamp.now(),
     );
   }
 }
