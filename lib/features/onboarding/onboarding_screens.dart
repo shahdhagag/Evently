@@ -2,12 +2,16 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:evently/core/shared/custom_button.dart';
 import 'package:evently/core/utiles/app_assets.dart';
 import 'package:evently/core/utiles/app_colors.dart';
+import 'package:evently/core/utiles/app_route.dart';
+import 'package:evently/core/utiles/extentions.dart';
+import 'package:evently/core/utiles/first_launch.dart';
 import 'package:evently/features/onboarding/widgets/arrow_back_widget.dart';
 import 'package:evently/features/onboarding/widgets/expanding_dots.dart';
 import 'package:evently/features/onboarding/widgets/skip_button.dart';
 import 'package:evently/providers/app_theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
 class OnboardingScreens extends StatefulWidget {
@@ -46,14 +50,13 @@ class _OnboardingScreenState extends State<OnboardingScreens> {
   ];
 
   void _nextPage() {
-    if (_currentPage < _pages.length - 1) {
-      _pageController.animateToPage(
-        _currentPage + 1,
-        duration: const Duration(milliseconds: 300),
-        curve: Curves.easeIn,
-      );
-    }
+    _pageController.animateToPage(
+      _currentPage + 1,
+      duration: const Duration(milliseconds: 300),
+      curve: Curves.easeIn,
+    );
   }
+
   void _previousPage() {
     if (_currentPage > 0) {
       _pageController.animateToPage(
@@ -64,29 +67,21 @@ class _OnboardingScreenState extends State<OnboardingScreens> {
     }
   }
 
-
   @override
   Widget build(BuildContext context) {
     final themeProvider = Provider.of<AppThemeProvider>(context);
-    ThemeMode currentTheme = themeProvider.appTheme;
+
     return Scaffold(
       body: SafeArea(
         child: Column(
           children: [
-            /// Top Bar header
+            /// Top Bar
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  if (_currentPage == 0)
-                    SizedBox()
-                  else
-                    GestureDetector(onTap: _previousPage, child: ArrowBackWidget()),
-                  Center(child: Image.asset(themeProvider.isDarkMode()?AppAssets.darkEvenlyLogo:AppAssets.evenlyLogo, width: 145)),
-                  SkipButton(),
-                ],
+              padding: EdgeInsets.symmetric(
+                horizontal: context.w(16),
+                vertical: context.h(8),
               ),
+              child: OnBoardingTopBar(themeProvider),
             ),
 
             /// PageView
@@ -101,47 +96,74 @@ class _OnboardingScreenState extends State<OnboardingScreens> {
                 },
                 itemBuilder: (context, index) {
                   final page = _pages[index];
+
                   return Padding(
-                    padding: const EdgeInsets.all(16.0),
+                    padding: EdgeInsets.all(context.w(16)),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        /// images
+                        /// Image
                         Expanded(
                           flex: 3,
-                          child: Center(child: Image.asset(themeProvider.isDarkMode()?page['dark_image']! :page['image']!)),
+                          child: Center(
+                            child: Image.asset(
+                              themeProvider.isDarkMode()
+                                  ? page['dark_image']!
+                                  : page['image']!,
+                            ),
+                          ),
                         ),
-                        const SizedBox(height: 25),
 
-                        /// expandable dots
+                        SizedBox(height: context.h(25)),
+
+                        /// Dots
                         ExpandingDots(
                           pageController: _pageController,
                           pages: _pages,
                         ),
-                        const Gap(16),
 
-                        /// title and subtitle
+                        Gap(context.h(16)),
+
+                        /// Title
                         Text(
                           page['title']!,
-                          style:  TextStyle(
+                          style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
-                            color:themeProvider.isDarkMode()?AppColors.darkMainText: AppColors.lightMainText,
+                            color: themeProvider.isDarkMode()
+                                ? AppColors.darkMainText
+                                : AppColors.lightMainText,
                           ),
                         ),
-                        const Gap(8),
+
+                        Gap(context.h(8)),
+
+                        /// Subtitle
                         Text(
                           page['subtitle']!,
-                          style:  TextStyle(
+                          style: TextStyle(
                             fontSize: 14,
-                            color:themeProvider.isDarkMode()?AppColors.darkSecText: AppColors.lightSecText,
+                            color: themeProvider.isDarkMode()
+                                ? AppColors.darkSecText
+                                : AppColors.lightSecText,
                           ),
                         ),
-                        const Gap(16),
 
-                        /// button
-                        CustomButton(title: page['button']!, onTap: _nextPage),
-                        const SizedBox(height: 10),
+                        Gap(context.h(16)),
+
+                        /// Button
+                        CustomButton(
+                          title: page['button']!,
+                          onTap: () async {
+                            if (_currentPage == _pages.length - 1) {
+                              await FirstLaunch.completeOnboarding();  // mark onboarding as done
+                              context.go(AppRouts.loginScreen);        // go to login
+                            } else {
+                              _nextPage();
+                            }
+                          },
+                        ),
+                        SizedBox(height: context.h(10)),
                       ],
                     ),
                   );
@@ -151,6 +173,29 @@ class _OnboardingScreenState extends State<OnboardingScreens> {
           ],
         ),
       ),
+    );
+  }
+
+  Row OnBoardingTopBar(AppThemeProvider themeProvider) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        _currentPage == 0
+            ? const SizedBox()
+            : GestureDetector(
+          onTap: _previousPage,
+          child: const ArrowBackWidget(),
+        ),
+        Center(
+          child: Image.asset(
+            themeProvider.isDarkMode()
+                ? AppAssets.darkEvenlyLogo
+                : AppAssets.evenlyLogo,
+            width: context.w(145),
+          ),
+        ),
+        const SkipButton(),
+      ],
     );
   }
 }

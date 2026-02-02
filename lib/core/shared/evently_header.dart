@@ -1,5 +1,6 @@
 import 'package:evently/core/utiles/app_assets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class EventlyHeader extends StatelessWidget {
   const EventlyHeader({
@@ -10,10 +11,10 @@ class EventlyHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Padding(
-        padding: const EdgeInsets.only(top: 30.0),
+        padding: EdgeInsets.only(top: 30.h),
         child: Image.asset(
           AppAssets.evenlyLogo,
-          width: 140,
+          width: 140.w,
         ),
       ),
     );

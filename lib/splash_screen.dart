@@ -1,5 +1,6 @@
 import 'package:evently/core/utiles/app_assets.dart';
 import 'package:evently/core/utiles/app_route.dart';
+import 'package:evently/core/utiles/extentions.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -30,15 +31,17 @@ class _SplashScreenState extends State<SplashScreen> {
             child: Center(
               child: Image.asset(
                 AppAssets.evenlyLogo,
-                width: 300,
+                width: context.w(300),
               ),
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(bottom: 50),
+            padding: EdgeInsets.only(
+              bottom: context.h(50),
+            ),
             child: Image.asset(
               AppAssets.routeLogo,
-              width: 70,
+              width: context.w(70),
             ),
           ),
         ],
