@@ -55,7 +55,7 @@ class EventListProvider extends ChangeNotifier {
     // Return cached data if available
     if (_eventsCache.containsKey(categoryKey)) {
       eventsList = List.from(_eventsCache[categoryKey]!);
-      eventsList.sort((a, b) => b.date.compareTo(a.date));
+      eventsList.sort((a, b) => b.lastUpdated.compareTo(a.lastUpdated));
       notifyListeners();
       return;
     }
@@ -75,7 +75,7 @@ class EventListProvider extends ChangeNotifier {
 
       final snapshot = await query.get();
       eventsList = snapshot.docs.map((doc) => doc.data()).toList();
-      eventsList.sort((a, b) => b.date.compareTo(a.date));
+      eventsList.sort((a, b) => b.lastUpdated.compareTo(a.lastUpdated));
 
       // Cache the results
       _eventsCache[categoryKey] = List.from(eventsList);

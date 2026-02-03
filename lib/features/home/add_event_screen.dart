@@ -566,7 +566,7 @@ class _AddEventScreenState extends State<AddEventScreen> {
         ),
       ),
     );
-    context.pop();
+    context.go(AppRouts.homeScreen);
   }
 
 }

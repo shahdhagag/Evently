@@ -29,7 +29,7 @@ class _HomeTabState extends State<HomeTab> with SingleTickerProviderStateMixin {
   void initState() {
     super.initState();
     final provider = context.read<EventListProvider>();
-  //  provider.getEventsStream(); // live updates for all tabs
+    //  provider.getEventsStream(); // live updates for all tabs
 
     _tabController = TabController(
       length: provider.eventsNameList.length,
@@ -41,6 +41,9 @@ class _HomeTabState extends State<HomeTab> with SingleTickerProviderStateMixin {
       if (_tabController.indexIsChanging) {
         provider.changeCategory(_tabController.index);
       }
+    });
+    Future.microtask(() {
+      context.read<EventListProvider>().getEventsFromFirestore();
     });
   }
 
@@ -144,6 +147,8 @@ class _HomeTabState extends State<HomeTab> with SingleTickerProviderStateMixin {
                   itemCount: provider.eventsList.length,
                   separatorBuilder: (_, __) => SizedBox(height: 12.h),
                   itemBuilder: (context, index) {
+                    provider.eventsList.sort((a, b) => b.lastUpdated.compareTo(a.lastUpdated));
+
                     return EventItem(event: provider.eventsList[index]);
                   },
                 ),
@@ -264,4 +269,3 @@ class ENorArButton extends StatelessWidget {
     );
   }
 }
-

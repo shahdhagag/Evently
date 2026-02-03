@@ -219,31 +219,36 @@ class FirebaseFunctions {
     });
   }
 
-  /// 7. Get events once
+// GET EVENTS ONCE
   static Future<QuerySnapshot<EventModel>> getEvents(String? eventName) async {
     final collectionRef = getEventsCollection();
+    final uid = FirebaseAuth.instance.currentUser?.uid;
+    if (uid == null) throw Exception("No user logged in");
+
+    Query<EventModel> query = collectionRef.where("userUid", isEqualTo: uid);
+
     if (eventName != null && eventName.isNotEmpty) {
-      return await collectionRef
-          .where("userId", isEqualTo: FirebaseAuth.instance.currentUser!.uid)
-          .where('eventName', isEqualTo: eventName)
-          .get();
-    } else {
-      return await collectionRef.get();
+      query = query.where('eventName', isEqualTo: eventName);
     }
+
+    return await query.get();
   }
 
-  /// Stream to get events
-  static Stream<QuerySnapshot<EventModel>> getEventsStream(String? eventsName) {
+// STREAM EVENTS
+  static Stream<QuerySnapshot<EventModel>> getEventsStream(String? eventName) {
     final collectionRef = getEventsCollection();
-    if (eventsName != null && eventsName.isNotEmpty) {
-      return collectionRef
-          .where("userId", isEqualTo: FirebaseAuth.instance.currentUser!.uid)
-          .where('eventName', isEqualTo: eventsName)
-          .snapshots();
-    } else {
-      return collectionRef.snapshots();
+    final uid = FirebaseAuth.instance.currentUser?.uid;
+    if (uid == null) throw Exception("No user logged in");
+
+    Query<EventModel> query = collectionRef.where("userUid", isEqualTo: uid);
+
+    if (eventName != null && eventName.isNotEmpty) {
+      query = query.where('eventName', isEqualTo: eventName);
     }
+
+    return query.snapshots();
   }
+
 
   /// 8. DELETE EVENT
   static Future<void> deleteEvent(String eventId) async {

@@ -11,6 +11,7 @@ import 'package:evently/features/onboarding/widgets/theme_widgets.dart';
 import 'package:evently/providers/app_language_provider.dart';
 import 'package:evently/providers/app_theme_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
@@ -27,9 +28,7 @@ class OnboardingScreen extends StatelessWidget {
 
     return Scaffold(
       body: Padding(
-        padding: EdgeInsets.symmetric(
-          horizontal: context.w(16),
-        ),
+        padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 10.h),
         child: Column(
           children: [
             EventlyHeader(),
@@ -50,7 +49,7 @@ class OnboardingScreen extends StatelessWidget {
                       ? AppStyles.bold20black.copyWith(color: Colors.white)
                       : AppStyles.bold20black,
                 ),
-                Gap(context.h(8)),
+                Gap(12.h),
                 Text(
                   "onboardSubTitle".tr(),
                   style: currentTheme == ThemeMode.dark
@@ -60,16 +59,20 @@ class OnboardingScreen extends StatelessWidget {
                 ),
               ],
             ),
-            Gap(context.h(10)),
+            Gap(24.h),
             LanguageWidget(),
-             Gap(context.h(16)),
+            Gap(context.h(16)),
             ThemeWidget(),
-            Gap(context.h(10)),
-            CustomButton(
-              title: "Let's Start".tr(),
-              onTap: () {
-                context.go(AppRouts.onboardingScreens);
-              },
+            Gap( 20.h),
+
+            Padding(
+              padding: EdgeInsets.only(bottom: 10.h, top: 10.h),
+              child: CustomButton(
+                title: "Let's Start".tr(),
+                onTap: () {
+                  context.go(AppRouts.onboardingScreens);
+                },
+              ),
             ),
           ],
         ),

@@ -3,10 +3,12 @@ import 'package:evently/core/utiles/go_router_refresh_stream.dart';
 import 'package:evently/features/Auth/Login/login_screen.dart';
 import 'package:evently/features/Auth/Register/register_screen.dart';
 import 'package:evently/features/Auth/rest_pw_screen.dart';
+import 'package:evently/features/event_detailes/event_details_screen.dart';
 import 'package:evently/features/home/add_event_screen.dart';
 import 'package:evently/features/home/home_screen.dart';
 import 'package:evently/features/onboarding/onboarding_screens.dart';
 import 'package:evently/features/onboarding/onborading1.dart';
+import 'package:evently/models/event_model.dart';
 import 'package:evently/splash_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:go_router/go_router.dart';
@@ -20,6 +22,7 @@ class AppRouts {
   static const homeScreen = "/home_Screens";
   static const restPasswordScreen = "/restPassword_Screens";
   static const addEventScreen = "/AddEvent_Screens";
+  static const eventDetailsScreen = "/eventDetailsScreen";
 
   static final GoRouter router = GoRouter(
     initialLocation: '/',
@@ -69,7 +72,14 @@ class AppRouts {
       GoRoute(
         path: addEventScreen,
         builder: (context, state) => AddEventScreen(),
+      ),  GoRoute(
+        path: eventDetailsScreen,
+        builder: (context, state) {
+          final event = state.extra as EventModel;
+          return EventDetailsScreen(event: event);
+        },
       ),
+
     ],
   );
 }
