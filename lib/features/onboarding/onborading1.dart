@@ -5,7 +5,6 @@ import 'package:evently/core/utiles/app_assets.dart';
 import 'package:evently/core/utiles/app_route.dart';
 import 'package:evently/core/utiles/app_styles.dart';
 import 'package:evently/core/utiles/extentions.dart';
-import 'package:evently/features/onboarding/onboarding_screens.dart';
 import 'package:evently/features/onboarding/widgets/language_widgets.dart';
 import 'package:evently/features/onboarding/widgets/theme_widgets.dart';
 import 'package:evently/providers/app_language_provider.dart';

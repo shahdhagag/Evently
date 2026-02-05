@@ -8,10 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
 
 class EventListProvider extends ChangeNotifier {
-  // List of events currently visible in the UI
   List<EventModel> eventsList = [];
 
-  // Internal keys (English) for Firestore & cache
   final List<String> _eventsNameKeys = [
     'All',
     'Sports',
@@ -31,7 +29,6 @@ class EventListProvider extends ChangeNotifier {
   int selectedIndex = 0;
   bool isLoading = false;
 
-  // Cache events per category
   final Map<String, List<EventModel>> _eventsCache = {};
 
   StreamSubscription<QuerySnapshot<EventModel>>? _eventsStreamSub;
@@ -39,7 +36,6 @@ class EventListProvider extends ChangeNotifier {
 
   bool _isStreamStarted = false;
 
-  /// Constructor
   EventListProvider() {
     getEventsFromFirestore();
     _startStream();

@@ -5,17 +5,15 @@ import 'package:evently/core/shared/custom_divider.dart';
 import 'package:evently/core/shared/custom_text_form_field.dart';
 import 'package:evently/core/utiles/app_assets.dart';
 import 'package:evently/core/utiles/app_route.dart';
-import 'package:evently/core/utiles/extentions.dart';
 import 'package:evently/features/Auth/widgets/login_with_google_widget.dart';
 import 'package:evently/features/Auth/widgets/signupTextSpan.dart';
 import 'package:evently/providers/app_theme_provider.dart';
 import 'package:evently/providers/login_provider.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart'; // <-- added
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -32,12 +30,12 @@ class LoginScreen extends StatelessWidget {
             themeProvider.isDarkMode()
                 ? AppAssets.darkEvenlyLogo
                 : AppAssets.evenlyLogo,
-            width: 145.w, // responsive width
+            width: 145.w,
           ),
         ),
         body: SingleChildScrollView(
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 17.w), // responsive padding
+            padding: EdgeInsets.symmetric(horizontal: 17.w),
             child: Consumer<LoginProvider>(
               builder: (context, loginProvider, _) {
                 return Form(
@@ -46,7 +44,7 @@ class LoginScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Gap(24.h), // responsive gap
+                      Gap(24.h),
                       Text(
                         "Login to your account".tr(),
                         style: Theme.of(context).textTheme.bodyLarge,
@@ -85,7 +83,7 @@ class LoginScreen extends StatelessWidget {
                       ),
                       if (loginProvider.errorMessage != null)
                         Padding(
-                          padding: EdgeInsets.only(bottom: 16.h), // responsive
+                          padding: EdgeInsets.only(bottom: 16.h),
                           child: Text(
                             loginProvider.errorMessage!,
                             style: const TextStyle(color: Colors.red),

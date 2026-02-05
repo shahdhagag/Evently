@@ -162,11 +162,11 @@ class FirebaseFunctions {
       final user = userCredential.user;
       if (user == null) return userCredential;
 
-      /// 🔥 CHECK FIRESTORE
+      ///  CHECK FIRESTORE
       final docRef = getUserCollection().doc(user.uid);
       final doc = await docRef.get();
 
-      /// 🔥 CREATE USER ONLY FIRST TIME
+      ///  CREATE USER ONLY FIRST TIME
       if (!doc.exists) {
         await createUserDB(
           UserModel(

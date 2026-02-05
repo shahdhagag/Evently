@@ -19,8 +19,13 @@ class EventDetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final themeProvider = context.watch<AppThemeProvider>();
-    final eventProvider = context.read<EventListProvider>();
+    final eventProvider = context.watch<EventListProvider>();
     final isDark = themeProvider.isDarkMode();
+
+    final updatedEvent = eventProvider.eventsList.firstWhere(
+          (e) => e.id == event.id,
+      orElse: () => event,
+    );
 
     return Scaffold(
       appBar: AppBar(
@@ -39,48 +44,56 @@ class EventDetailsScreen extends StatelessWidget {
             isDark: isDark,
             icon: Icons.edit_outlined,
             iconColor: isDark ? Colors.white : AppColors.lightPrimary,
-            onTap: () {
-              Navigator.push(
+            onTap: () async {
+              final updated = await Navigator.push<EventModel>(
                 context,
-                MaterialPageRoute(builder: (_) => AddEventScreen(eventToEdit: event)),
+                MaterialPageRoute(
+                  builder: (_) => AddEventScreen(eventToEdit: updatedEvent),
+                ),
               );
+
+              // If user edited, update provider
+              if (updated != null) {
+                eventProvider.updateEvent(updated);
+              }
             },
           ),
-
           SizedBox(width: 8.w),
+
           /// Delete Button
           _buildActionButton(
             isDark: isDark,
             icon: Icons.delete_outline,
             iconColor: Colors.red,
             onTap: () {
-              eventProvider.deleteEvent(event.id);
+              eventProvider.deleteEvent(updatedEvent.id);
               Navigator.pop(context);
             },
           ),
-
           SizedBox(width: 16.w),
         ],
-      ),      body: SingleChildScrollView(
+      ),
+      body: SingleChildScrollView(
         padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 10.h),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             /// Event Image
-            EvenImageWidget( isDark: isDark, selectedEventImage: event.eventImage,),
-
+            EvenImageWidget(
+              isDark: isDark,
+              selectedEventImage: updatedEvent.eventImage,
+            ),
             SizedBox(height: 16.h),
 
             /// Title
             Text(
-              event.title,
+              updatedEvent.title,
               style: TextStyle(
                 fontSize: 18.sp,
                 fontWeight: FontWeight.bold,
                 color: isDark ? Colors.white : Colors.black,
               ),
             ),
-
             SizedBox(height: 9.h),
 
             /// Date & Time Card
@@ -88,30 +101,35 @@ class EventDetailsScreen extends StatelessWidget {
               padding: EdgeInsets.all(8.w),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(16.r),
-                border: Border.all(color: isDark ? AppColors.darkStroke : AppColors.lightStroke),
-                color: isDark? AppColors.darkInput : Colors.white,
-
+                border: Border.all(
+                  color: isDark ? AppColors.darkStroke : AppColors.lightStroke,
+                ),
+                color: isDark ? AppColors.darkInput : Colors.white,
               ),
               child: Row(
                 children: [
                   Container(
                     padding: EdgeInsets.all(10.w),
                     decoration: BoxDecoration(
-                      color: isDark ? AppColors.darkInput : AppColors.lightPrimary.withOpacity(0.1),
+                      color: isDark
+                          ? AppColors.darkInput
+                          : AppColors.lightPrimary.withOpacity(0.1),
                       borderRadius: BorderRadius.circular(12.r),
                       border: Border.all(
                         color: isDark ? AppColors.darkStroke : AppColors.lightStroke,
                       ),
                     ),
-                    child: Icon(Icons.calendar_month_outlined,
-                        color: isDark ? AppColors.darkPrimary : AppColors.lightPrimary),
+                    child: Icon(
+                      Icons.calendar_month_outlined,
+                      color: isDark ? AppColors.darkPrimary : AppColors.lightPrimary,
+                    ),
                   ),
                   SizedBox(width: 12.w),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        DateFormat('d MMMM').format(event.date),
+                        DateFormat('d MMMM').format(updatedEvent.date),
                         style: TextStyle(
                           fontSize: 16.sp,
                           fontWeight: FontWeight.w600,
@@ -119,7 +137,7 @@ class EventDetailsScreen extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        DateFormat('hh:mm a').format(event.date),
+                        DateFormat('hh:mm a').format(updatedEvent.date),
                         style: TextStyle(
                           fontSize: 14.sp,
                           color: isDark ? AppColors.darkSecText : AppColors.lightDisabled,
@@ -130,11 +148,9 @@ class EventDetailsScreen extends StatelessWidget {
                 ],
               ),
             ),
-
             SizedBox(height: 16.h),
 
             /// Description Section
-
             Text(
               "Description".tr(),
               style: TextStyle(
@@ -148,7 +164,7 @@ class EventDetailsScreen extends StatelessWidget {
               width: double.infinity,
               padding: EdgeInsets.all(16.w),
               decoration: BoxDecoration(
-                color: isDark? AppColors.darkInput : Colors.white,
+                color: isDark ? AppColors.darkInput : Colors.white,
                 borderRadius: BorderRadius.circular(16.r),
                 border: Border.all(
                   color: isDark ? AppColors.darkStroke : AppColors.lightStroke,
@@ -156,7 +172,7 @@ class EventDetailsScreen extends StatelessWidget {
                 ),
               ),
               child: Text(
-                event.description,
+                updatedEvent.description,
                 style: TextStyle(
                   fontSize: 14.sp,
                   height: 1.5,
@@ -169,6 +185,7 @@ class EventDetailsScreen extends StatelessWidget {
       ),
     );
   }
+
   Widget _buildActionButton({
     required bool isDark,
     required IconData icon,

@@ -60,14 +60,14 @@ class RegisterProvider extends ChangeNotifier {
   Future<bool> register() async {
     _errorMessage = null;
 
-    // 1. Validate the form fields
+    // 1 Validate the form fields
     if (!formKey.currentState!.validate()) return false;
 
     _isLoading = true;
     notifyListeners();
 
     try {
-      // 2. Call Firebase registration
+      // 2 Call Firebase registration
       await FirebaseFunctions.createUser(
         emailController.text.trim(),
         passwordController.text.trim(),
@@ -76,12 +76,12 @@ class RegisterProvider extends ChangeNotifier {
 
       _isLoading = false;
       notifyListeners();
-      return true; // Return true so the UI knows to navigate
+      return true;
     } catch (e) {
       _errorMessage = 'Registration failed: ${e.toString()}';
       _isLoading = false;
       notifyListeners();
-      return false; // Return false so the UI stays on the page
+      return false;
     }
   }
 

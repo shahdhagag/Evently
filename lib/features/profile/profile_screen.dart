@@ -50,13 +50,13 @@ class ProfileScreen extends StatelessWidget {
               ///  User Name
               Text(
                 userName,
-                style: Theme.of(context).textTheme.titleMedium?.copyWith(fontSize: 18.sp), // <- Responsive
+                style: Theme.of(context).textTheme.titleMedium?.copyWith(fontSize: 18.sp),
               ),
 
               ///  Email
               Text(
                 userEmail,
-                style: Theme.of(context).textTheme.bodySmall?.copyWith(fontSize: 14.sp), // <- Responsive
+                style: Theme.of(context).textTheme.bodySmall?.copyWith(fontSize: 14.sp),
               ),
 
               SizedBox(height: 24.h),
@@ -117,7 +117,7 @@ class ProfileScreen extends StatelessWidget {
                       //  Firebase logout
                       await FirebaseFunctions.logout();
 
-                      // Go to login
+
                       context.go(AppRouts.loginScreen);
                     } catch (e) {
                       ScaffoldMessenger.of(context).showSnackBar(

@@ -21,12 +21,13 @@ class FavouriteScreen extends StatelessWidget {
     final eventListProvider = context.watch<EventListProvider>();
     final searchProvider = context.watch<FavoriteSearchProvider>();
 
-
     final favoriteEvents = eventListProvider.allFavoriteEvents;
 
-// search + favorites
+    // search + favorites
     final filteredEvents = searchProvider.filterEvents(favoriteEvents);
 
+    // Reverse the filtered list so the most recently favorited appear at the top
+    final displayedEvents = filteredEvents.reversed.toList();
 
     return Scaffold(
       appBar: AppBar(
@@ -38,7 +39,7 @@ class FavouriteScreen extends StatelessWidget {
         titleSpacing: 16,
         centerTitle: true,
       ),
-      body: filteredEvents.isEmpty
+      body: displayedEvents.isEmpty
           ? Center(
         child: Text(
           'no_favorite_events'.tr(),
@@ -50,10 +51,10 @@ class FavouriteScreen extends StatelessWidget {
       )
           : ListView.separated(
         padding: EdgeInsets.all(width * 0.04),
-        itemCount: filteredEvents.length,
+        itemCount: displayedEvents.length,
         separatorBuilder: (_, __) => const Gap(15),
         itemBuilder: (context, index) {
-          return EventItem(event: filteredEvents[index]);
+          return EventItem(event: displayedEvents[index]);
         },
       ),
     );

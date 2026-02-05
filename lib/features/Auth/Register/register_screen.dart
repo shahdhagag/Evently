@@ -103,7 +103,7 @@ class RegisterScreen extends StatelessWidget {
                             bool success = await registerProvider.register();
 
                             if (success && context.mounted) {
-                              // 1. Show the Snackbar
+
                               ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(
                                   content: Text("Account created! Please check your email to verify before logging in.".tr()),
@@ -112,7 +112,7 @@ class RegisterScreen extends StatelessWidget {
                                 ),
                               );
 
-                              // 2. Instead of Home, go back to Login Screen
+
                               context.go(AppRouts.loginScreen);
                             }
                           }

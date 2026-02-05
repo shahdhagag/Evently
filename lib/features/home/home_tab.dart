@@ -29,7 +29,6 @@ class _HomeTabState extends State<HomeTab> with SingleTickerProviderStateMixin {
   void initState() {
     super.initState();
     final provider = context.read<EventListProvider>();
-    //  provider.getEventsStream(); // live updates for all tabs
 
     _tabController = TabController(
       length: provider.eventsNameList.length,
@@ -250,10 +249,8 @@ class ENorArButton extends StatelessWidget {
             ? const Locale('ar', 'EG')
             : const Locale('en', 'US');
 
-        // Change provider language
         languageProvider.changeLanguage(newLocale, context);
 
-        // Update EasyLocalization locale
         await context.setLocale(newLocale);
       },
       style: ElevatedButton.styleFrom(

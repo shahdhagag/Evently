@@ -10,7 +10,6 @@ import 'package:evently/features/home/widgets/desc_text_form_field.dart';
 import 'package:evently/features/home/widgets/event_img_widget.dart';
 import 'package:evently/features/home/widgets/tab_category_widget.dart';
 import 'package:evently/features/home/widgets/title_text_form_field.dart';
-import 'package:evently/features/onboarding/widgets/arrow_back_widget.dart';
 import 'package:evently/models/event_model.dart';
 import 'package:evently/providers/app_theme_provider.dart';
 import 'package:evently/providers/event_list_provider.dart';
@@ -118,7 +117,7 @@ class _AddEventScreenState extends State<AddEventScreen> {
   }
 
   TimeOfDay _parseTime(String time) {
-    // 1. Convert Arabic numbers back to English before parsing to avoid FormatException
+    //  Convert Arabic numbers back to English before parsing to avoid FormatException
     String englishTime = time
         .replaceAll('٠', '0')
         .replaceAll('١', '1')
@@ -132,7 +131,7 @@ class _AddEventScreenState extends State<AddEventScreen> {
         .replaceAll('٩', '9');
 
     try {
-      // 2. Parse using the English locale
+      //  Parse using the English locale
       final format = DateFormat.jm('en_US');
       final dateTime = format.parse(englishTime);
       return TimeOfDay.fromDateTime(dateTime);
@@ -158,7 +157,7 @@ class _AddEventScreenState extends State<AddEventScreen> {
 
     final index = translatedList.indexOf(translatedName);
     if (index != -1) return englishKeys[index];
-    return englishKeys[0]; // fallback
+    return englishKeys[0];
   }
 
   @override
@@ -374,14 +373,15 @@ class _AddEventScreenState extends State<AddEventScreen> {
                 ),
               );
   }
-
-  // 🔹 Date picker
+//date
   void chooseDate() async {
+    final now = DateTime.now();
+    final initial = selectedDate ?? now;
     final choosedDate = await showDatePicker(
       context: context,
-      initialDate: selectedDate ?? DateTime.now(),
-      firstDate: DateTime.now(),
-      lastDate: DateTime.now().add(const Duration(days: 365)),
+      initialDate: initial,
+      firstDate: DateTime(2000),
+      lastDate: now.add(const Duration(days: 365)),
       locale: context.locale,
       builder: (context, child) {
         final themeProvider = context.read<AppThemeProvider>();
@@ -392,23 +392,18 @@ class _AddEventScreenState extends State<AddEventScreen> {
               brightness: isDark ? Brightness.dark : Brightness.light,
               primary: isDark ? AppColors.darkPrimary : AppColors.lightPrimary,
               onPrimary: Colors.white,
-              secondary:
-              isDark ? AppColors.darkPrimary : AppColors.lightPrimary,
+              secondary: isDark ? AppColors.darkPrimary : AppColors.lightPrimary,
               onSecondary: Colors.white,
               surface: isDark ? AppColors.darkInput : Colors.white,
-              onSurface:
-              isDark ? AppColors.darkMainText : AppColors.lightMainText,
-              background:
-              isDark ? AppColors.darkBackground : AppColors.lightBackground,
+              onSurface: isDark ? AppColors.darkMainText : AppColors.lightMainText,
+              background: isDark ? AppColors.darkBackground : AppColors.lightBackground,
               error: AppColors.red,
               onError: Colors.white,
             ),
-            dialogBackgroundColor:
-            isDark ? AppColors.darkBackground : Colors.white,
+            dialogBackgroundColor: isDark ? AppColors.darkBackground : Colors.white,
             textButtonTheme: TextButtonThemeData(
               style: TextButton.styleFrom(
-                foregroundColor:
-                isDark ? AppColors.darkPrimary : AppColors.lightPrimary,
+                foregroundColor: isDark ? AppColors.darkPrimary : AppColors.lightPrimary,
               ),
             ),
           ),
@@ -425,7 +420,7 @@ class _AddEventScreenState extends State<AddEventScreen> {
     }
   }
 
-  // 🔹 Time picker
+//time
   void chooseTime() async {
     final choosedTime = await showTimePicker(
       context: context,
@@ -439,23 +434,18 @@ class _AddEventScreenState extends State<AddEventScreen> {
               brightness: isDark ? Brightness.dark : Brightness.light,
               primary: isDark ? AppColors.darkPrimary : AppColors.lightPrimary,
               onPrimary: Colors.white,
-              secondary:
-              isDark ? AppColors.darkPrimary : AppColors.lightPrimary,
+              secondary: isDark ? AppColors.darkPrimary : AppColors.lightPrimary,
               onSecondary: Colors.white,
               surface: isDark ? AppColors.darkInput : Colors.white,
-              onSurface:
-              isDark ? AppColors.darkMainText : AppColors.lightMainText,
-              background:
-              isDark ? AppColors.darkBackground : AppColors.lightBackground,
+              onSurface: isDark ? AppColors.darkMainText : AppColors.lightMainText,
+              background: isDark ? AppColors.darkBackground : AppColors.lightBackground,
               error: AppColors.red,
               onError: Colors.white,
             ),
-            dialogBackgroundColor:
-            isDark ? AppColors.darkBackground : Colors.white,
+            dialogBackgroundColor: isDark ? AppColors.darkBackground : Colors.white,
             textButtonTheme: TextButtonThemeData(
               style: TextButton.styleFrom(
-                foregroundColor:
-                isDark ? AppColors.darkPrimary : AppColors.lightPrimary,
+                foregroundColor: isDark ? AppColors.darkPrimary : AppColors.lightPrimary,
               ),
             ),
           ),
@@ -467,16 +457,24 @@ class _AddEventScreenState extends State<AddEventScreen> {
     if (choosedTime != null) {
       setState(() {
         selectedTime = choosedTime;
-        final now = DateTime.now();
-        final dt = DateTime(now.year, now.month, now.day, selectedTime!.hour,
-            selectedTime!.minute);
-        // Store formattedTime in English digits internally
-        formattedTime = DateFormat.jm('en_US').format(dt);
+
+
+        final date = selectedDate ?? DateTime.now();
+        selectedDate = DateTime(
+          date.year,
+          date.month,
+          date.day,
+          selectedTime!.hour,
+          selectedTime!.minute,
+        );
+
+        formattedDate = DateFormat('MMMM dd, yyyy', 'en').format(selectedDate!);
+        formattedTime = DateFormat.jm('en_US').format(selectedDate!);
       });
     }
   }
 
-  // 🔹 Add event
+  //  Add event
   Future<void> addEvent() async {
     final eventListProvider = context.read<EventListProvider>();
 
@@ -491,15 +489,15 @@ class _AddEventScreenState extends State<AddEventScreen> {
       return;
     }
 
-    final englishEventName = getEnglishEventName(selectedEventsName); // 🔹 convert to English key
+    final englishEventName = getEnglishEventName(selectedEventsName);
 
     final event = EventModel(
       date: selectedDate!,
       title: titleController.text.trim(),
       description: descController.text.trim(),
-      eventName: englishEventName, // 🔹 use English key here
+      eventName: englishEventName,
       eventImage: selectedEventImage,
-      time: formattedTime, // Stored in English digits
+      time: formattedTime,
       userUid: FirebaseAuth.instance.currentUser!.uid,
     );
 
@@ -514,7 +512,7 @@ class _AddEventScreenState extends State<AddEventScreen> {
     context.go(AppRouts.homeScreen);
   }
 
-// 🔹 Edit event
+
   Future<void> editEvent() async {
     final eventListProvider = context.read<EventListProvider>();
     if (!_formKey.currentState!.validate()) return;
@@ -566,7 +564,7 @@ class _AddEventScreenState extends State<AddEventScreen> {
         ),
       ),
     );
-    context.go(AppRouts.homeScreen);
+    context.pop();
   }
 
 }

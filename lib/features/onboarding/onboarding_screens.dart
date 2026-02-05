@@ -156,8 +156,8 @@ class _OnboardingScreenState extends State<OnboardingScreens> {
                           title: page['button']!,
                           onTap: () async {
                             if (_currentPage == _pages.length - 1) {
-                              await FirstLaunch.completeOnboarding();  // mark onboarding as done
-                              context.go(AppRouts.loginScreen);        // go to login
+                              await FirstLaunch.completeOnboarding();  // onboarding  done
+                              context.go(AppRouts.loginScreen);
                             } else {
                               _nextPage();
                             }
