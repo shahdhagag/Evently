@@ -541,29 +541,30 @@ class _AddEventScreenState extends State<AddEventScreen> {
     await eventListProvider.updateEvent(updatedEvent);
 
     if (!context.mounted) return;
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        behavior: SnackBarBehavior.floating,
-        backgroundColor: AppColors.lightPrimary,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12),
-        ),
-        margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
-        content: Row(
-          children: const [
-            Icon(Icons.check_circle, color: Colors.white),
-            SizedBox(width: 10),
-            Expanded(
-              child: Text(
-                "Event updated successfully",
-                style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
+    AppDialogs.showSuccessSnackBar(context, "Event updated successfully");
+    // ScaffoldMessenger.of(context).showSnackBar(
+    //   SnackBar(
+    //     behavior: SnackBarBehavior.floating,
+    //     backgroundColor: AppColors.lightPrimary,
+    //     shape: RoundedRectangleBorder(
+    //       borderRadius: BorderRadius.circular(12),
+    //     ),
+    //     margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+    //     padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+    //     content: Row(
+    //       children: const [
+    //         Icon(Icons.check_circle, color: Colors.white),
+    //         SizedBox(width: 10),
+    //         Expanded(
+    //           child: Text(
+    //             "Event updated successfully",
+    //             style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+    //           ),
+    //         ),
+    //       ],
+    //     ),
+    //   ),
+
     context.pop();
   }
 
