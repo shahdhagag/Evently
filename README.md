@@ -91,38 +91,44 @@ _<!-- Row 1: Onboarding Dark & Light --> <img src="https://github.com/user-attac
 
 ---
 
-
 ## 🎨 Screenshots
-
-*(Showcasing Light Mode first, then Dark Mode, including onboarding, profile, events, home, and settings.)*
-
----
 
 ### **Light Mode**
 
-**Onboarding & Authentication** <img width="1080" height="2280" alt="onbardone" src="https://github.com/user-attachments/assets/13a2e548-0778-45ca-a14e-77f06212daeb" /> <img width="1080" height="2280" alt="onboard3" src="https://github.com/user-attachments/assets/69d107fb-dda1-4b41-badd-35227ba6b6dc" /> <img width="1080" height="2280" alt="onboard4" src="https://github.com/user-attachments/assets/278c9d94-b57d-4964-bd49-b431f43186c1" /> <img width="1080" height="2280" alt="loginlight" src="https://github.com/user-attachments/assets/2dca45de-2e2d-441c-87dd-a5499e984f47" /> <img width="1080" height="2280" alt="registerlight" src="https://github.com/user-attachments/assets/e0836e73-f2e1-4e6e-8678-215c4ddab969" /> <img width="1080" height="2280" alt="restpassword" src="https://github.com/user-attachments/assets/12da3976-c59c-41c2-8669-12b260c021bf" />
-
-**Profile Screens** <img width="1080" height="2280" alt="user profile light" src="https://github.com/user-attachments/assets/bec5ad4d-c4bb-49b3-ba05-4ce3cf14b374" />
-
-**Home & Event Screens** <img width="1080" height="2280" alt="home tab screen dark" src="https://github.com/user-attachments/assets/80af2560-e27b-4716-9efc-5e10a7d6c942" /> <img width="1080" height="2280" alt="user when he clik on the evet it self to show event detail screen light" src="https://github.com/user-attachments/assets/f90801a0-2acb-435b-9908-576b676d28f0" /> <img width="1080" height="2280" alt="update event screen light" src="https://github.com/user-attachments/assets/67330a11-390d-4812-b086-e8d3b6738206" /> <img width="1080" height="2280" alt="addeveventlight" src="https://github.com/user-attachments/assets/3422ec75-77d4-4e64-a059-6f33c26f9868" />
-
-**Event Management (Swipe & Favorites)** <img width="1080" height="2280" alt="user can swip right to update event" src="https://github.com/user-attachments/assets/76473637-a89d-4284-b689-bafb557d5c17" /> <img width="1080" height="2280" alt="user can swip left o delett event" src="https://github.com/user-attachments/assets/33662eb8-d1a3-4c15-be98-7db70fa6ec9f" /> <img width="1080" height="2280" alt="favourite screen light" src="https://github.com/user-attachments/assets/33984c7b-2c22-4bf8-8bc3-46ae4835a8da" />
-
-**Choose Date / Time & Filters** <img width="1080" height="2280" alt="userchoose timelight" src="https://github.com/user-attachments/assets/c20c7750-a2cc-4eb4-9308-c950cbffc20c" /> <img width="1080" height="2280" alt="userchoose data light" src="https://github.com/user-attachments/assets/ccf2ccf4-ae94-4f96-9992-c8ddd4f51136" /> <img width="1080" height="2280" alt="user can search also here by itle or descriptio or category" src="https://github.com/user-attachments/assets/15504500-58b9-48d6-9095-9fd1bd902752" /> <img width="1080" height="2280" alt="category with no event yet" src="https://github.com/user-attachments/assets/ce385f56-6472-4439-8b5e-b41f6a9bf737" />
+<img width="200" alt="onbardone" src="https://github.com/user-attachments/assets/13a2e548-0778-45ca-a14e-77f06212daeb" />
+<img width="200" alt="onboard3" src="https://github.com/user-attachments/assets/69d107fb-dda1-4b41-badd-35227ba6b6dc" />
+<img width="200" alt="onboard4" src="https://github.com/user-attachments/assets/278c9d94-b57d-4964-bd49-b431f43186c1" />
+<img width="200" alt="loginlight" src="https://github.com/user-attachments/assets/2dca45de-2e2d-441c-87dd-a5499e984f47" />
+<img width="200" alt="registerlight" src="https://github.com/user-attachments/assets/e0836e73-f2e1-4e6e-8678-215c4ddab969" />
+<img width="200" alt="restpassword" src="https://github.com/user-attachments/assets/12da3976-c59c-41c2-8669-12b260c021bf" />
+<img width="200" alt="user profile light" src="https://github.com/user-attachments/assets/bec5ad4d-c4bb-49b3-ba05-4ce3cf14b374" />
+<img width="200" alt="home tab light" src="https://github.com/user-attachments/assets/80af2560-e27b-4716-9efc-5e10a7d6c942" />
+<img width="200" alt="event detail light" src="https://github.com/user-attachments/assets/f90801a0-2acb-435b-9908-576b676d28f0" />
+<img width="200" alt="update event light" src="https://github.com/user-attachments/assets/67330a11-390d-4812-b086-e8d3b6738206" />
+<img width="200" alt="addeveventlight" src="https://github.com/user-attachments/assets/3422ec75-77d4-4e64-a059-6f33c26f9868" />
+<img width="200" alt="favourite screen light" src="https://github.com/user-attachments/assets/33984c7b-2c22-4bf8-8bc3-46ae4835a8da" />
+<img width="200" alt="choose time light" src="https://github.com/user-attachments/assets/c20c7750-a2cc-4eb4-9308-c950cbffc20c" />
+<img width="200" alt="choose date light" src="https://github.com/user-attachments/assets/ccf2ccf4-ae94-4f96-9992-c8ddd4f51136" />
+<img width="200" alt="search light" src="https://github.com/user-attachments/assets/15504500-58b9-48d6-9095-9fd1bd902752" />
+<img width="200" alt="category empty light" src="https://github.com/user-attachments/assets/ce385f56-6472-4439-8b5e-b41f6a9bf737" />
 
 ---
 
 ### **Dark Mode**
 
-**Onboarding** <img width="1080" height="2280" alt="onboarddark1" src="https://github.com/user-attachments/assets/73ef0f69-0a72-47ac-ad87-397694d8b7cf" /> <img width="1080" height="2280" alt="Screenshot_20260206_015719" src="https://github.com/user-attachments/assets/119f05c5-b39e-44cf-a8eb-69936b2d45c7" />
-
-**Profile Screens** <img width="1080" height="2280" alt="user profile screen dark" src="https://github.com/user-attachments/assets/537c9199-4d90-4acb-b4a6-1d39d5bc2e80" />
-
-**Home & Event Screens** <img width="1080" height="2280" alt="home tab screen dark" src="https://github.com/user-attachments/assets/3ab64055-580c-42ef-ac77-d8ea2167b15b" /> <img width="1080" height="2280" alt="event detail screen dark" src="https://github.com/user-attachments/assets/337684f7-1567-434d-9426-28c5a54c261e" /> <img width="1080" height="2280" alt="event updated successfuly" src="https://github.com/user-attachments/assets/441669ec-3786-4fd7-a023-cfce56e4ba31" /> <img width="1080" height="2280" alt="add event screen dark" src="https://github.com/user-attachments/assets/aa3fd79c-dd36-4552-94b6-dfcfde661aef" />
-
-**Event Management (Swipe & Favorites)** <img width="1080" height="2280" alt="user delete when he swip dark" src="https://github.com/user-attachments/assets/b29a1b11-1fd9-4ff8-a794-903fecc2955d" /> <img width="1080" height="2280" alt="user edit when he swip dark" src="https://github.com/user-attachments/assets/b45eddcf-5b82-4b55-9ac9-6ea3f729f8c7" /> <img width="1080" height="2280" alt="fav screen dark" src="https://github.com/user-attachments/assets/3fc0a533-5158-4e2f-a6f1-a1fe33076c0e" />
-
-**Choose Date / Time & Filters** <img width="1080" height="2280" alt="choose time dark" src="https://github.com/user-attachments/assets/48c274f1-6f50-4352-baf6-aa28911dc542" /> <img width="1080" height="2280" alt="choose date dark" src="https://github.com/user-attachments/assets/30278b95-b4f8-4370-aff1-2cb4870180d6" /> <img width="1080" height="2280" alt="category with no evnet yet dark" src="https://github.com/user-attachments/assets/e9718006-b501-4a31-a574-a95bbca4560c" />
+<img width="200" alt="onboarddark1" src="https://github.com/user-attachments/assets/73ef0f69-0a72-47ac-ad87-397694d8b7cf" />
+<img width="200" alt="Screenshot_20260206_015719" src="https://github.com/user-attachments/assets/119f05c5-b39e-44cf-a8eb-69936b2d45c7" />
+<img width="200" alt="user profile dark" src="https://github.com/user-attachments/assets/537c9199-4d90-4acb-b4a6-1d39d5bc2e80" />
+<img width="200" alt="home tab dark" src="https://github.com/user-attachments/assets/3ab64055-580c-42ef-ac77-d8ea2167b15b" />
+<img width="200" alt="event detail dark" src="https://github.com/user-attachments/assets/337684f7-1567-434d-9426-28c5a54c261e" />
+<img width="200" alt="event updated dark" src="https://github.com/user-attachments/assets/441669ec-3786-4fd7-a023-cfce56e4ba31" />
+<img width="200" alt="add event dark" src="https://github.com/user-attachments/assets/aa3fd79c-dd36-4552-94b6-dfcfde661aef" />
+<img width="200" alt="user delete dark" src="https://github.com/user-attachments/assets/b29a1b11-1fd9-4ff8-a794-903fecc2955d" />
+<img width="200" alt="user edit dark" src="https://github.com/user-attachments/assets/b45eddcf-5b82-4b55-9ac9-6ea3f729f8c7" />
+<img width="200" alt="fav screen dark" src="https://github.com/user-attachments/assets/3fc0a533-5158-4e2f-a6f1-a1fe33076c0e" />
+<img width="200" alt="choose time dark" src="https://github.com/user-attachments/assets/48c274f1-6f50-4352-baf6-aa28911dc542" />
+<img width="200" alt="choose date dark" src="https://github.com/user-attachments/assets/30278b95-b4f8-4370-aff1-2cb4870180d6" />
+<img width="200" alt="category empty dark" src="https://github.com/user-attachments/assets/e9718006-b501-4a31-a574-a95bbca4560c" />
 
 ---
 
