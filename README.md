@@ -1,16 +1,131 @@
-# evently
 
-A new Flutter project.
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+# Evently
 
-A few resources to get you started if this is your first Flutter project:
+**Evently** is a modern, responsive Flutter application for managing events. It allows users to create, edit, delete, favorite, and search for events with ease. The app integrates **Firebase Authentication** and **Firestore** for user management and event storage, and supports **localization**, theming, onboarding, and smooth UI/UX interactions.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+---
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 📌 Features
+
+### **Event Management**
+
+* Add new events with:
+
+  * Title
+  * Description
+  * Date & Time
+  * Image selection
+* Edit existing events.
+* Delete events.
+
+### **Favorites**
+
+* Mark/unmark events as favorite.
+* View favorite events at the top of the list.
+* Search favorite events in real-time.
+
+### **Onboarding**
+
+* Guided onboarding screens for first-time users.
+* Smooth page indicators using `smooth_page_indicator`.
+
+### **Localization & Theming**
+
+* Multi-language support: **English & Arabic**.
+* Dark mode & light mode support.
+* Users can switch language and theme in the **Profile/Settings screen**.
+* Text and UI automatically adjust to the selected language and theme.
+
+### **Firebase Integration**
+
+* User authentication with Firebase Auth.
+* Sign in with Google.
+* Store events and user data in Firestore.
+
+### **User Experience**
+
+* Responsive design with `flutter_screenutil`.
+* Swipeable list items with `flutter_slidable`.
+* Custom splash screen and app icons.
+* Search functionality for events.
+* Smooth animations and transitions.
+
+### **Extras**
+
+* Persistent user preferences with `shared_preferences` for language and theme.
+* Fully tested and structured for scalability.
+* Clean and organized UI components.
+
+---
+
+## 📁 Project Structure
+
+* **features/** – Main app features like home, favorites, onboarding, profile, and event management.
+* **models/** – Event model and data structure.
+* **providers/** – State management using `Provider`.
+* **assets/** – Images, translations, and other static resources.
+* **core/utiles/** – Reusable styles, colors, and helper widgets.
+
+---
+
+## 📦 Dependencies
+
+Some key packages used in this project:
+
+* `provider` – State management
+* `firebase_core`, `firebase_auth`, `cloud_firestore` – Firebase integration
+* `easy_localization` – Multi-language support
+* `flutter_screenutil` – Responsive UI
+* `smooth_page_indicator` – Page indicators
+* `flutter_slidable` – Swipeable list items
+* `shared_preferences` – Persistent storage
+* `go_router` – Navigation routing
+
+---
+## 🎨 Screenshots
+
+### **Light Mode**
+
+<img width="200" alt="onbardone" src="https://github.com/user-attachments/assets/13a2e548-0778-45ca-a14e-77f06212daeb" />
+<img width="200" alt="onboard3" src="https://github.com/user-attachments/assets/69d107fb-dda1-4b41-badd-35227ba6b6dc" />
+<img width="200" alt="onboard4" src="https://github.com/user-attachments/assets/278c9d94-b57d-4964-bd49-b431f43186c1" />
+<img width="200" alt="loginlight" src="https://github.com/user-attachments/assets/2dca45de-2e2d-441c-87dd-a5499e984f47" />
+<img width="200" alt="registerlight" src="https://github.com/user-attachments/assets/e0836e73-f2e1-4e6e-8678-215c4ddab969" />
+<img width="200" alt="restpassword" src="https://github.com/user-attachments/assets/12da3976-c59c-41c2-8669-12b260c021bf" />
+<img width="200" alt="user profile light" src="https://github.com/user-attachments/assets/bec5ad4d-c4bb-49b3-ba05-4ce3cf14b374" />
+<img width="200" alt="event detail light" src="https://github.com/user-attachments/assets/f90801a0-2acb-435b-9908-576b676d28f0" />
+<img width="200" alt="update event light" src="https://github.com/user-attachments/assets/67330a11-390d-4812-b086-e8d3b6738206" />
+<img width="200" alt="addeveventlight" src="https://github.com/user-attachments/assets/3422ec75-77d4-4e64-a059-6f33c26f9868" />
+<img width="200" alt="favourite screen light" src="https://github.com/user-attachments/assets/33984c7b-2c22-4bf8-8bc3-46ae4835a8da" />
+<img width="200" alt="choose time light" src="https://github.com/user-attachments/assets/c20c7750-a2cc-4eb4-9308-c950cbffc20c" />
+<img width="200" alt="choose date light" src="https://github.com/user-attachments/assets/ccf2ccf4-ae94-4f96-9992-c8ddd4f51136" />
+<img width="200" alt="search light" src="https://github.com/user-attachments/assets/15504500-58b9-48d6-9095-9fd1bd902752" />
+<img width="200" alt="category empty light" src="https://github.com/user-attachments/assets/ce385f56-6472-4439-8b5e-b41f6a9bf737" />
+
+---
+
+### **Dark Mode**
+
+<img width="200" alt="onboarddark1" src="https://github.com/user-attachments/assets/73ef0f69-0a72-47ac-ad87-397694d8b7cf" />
+<img width="200" alt="home tab light" src="https://github.com/user-attachments/assets/80af2560-e27b-4716-9efc-5e10a7d6c942" />
+<img width="200" alt="user profile dark" src="https://github.com/user-attachments/assets/537c9199-4d90-4acb-b4a6-1d39d5bc2e80" />
+<img width="200" alt="home tab dark" src="https://github.com/user-attachments/assets/3ab64055-580c-42ef-ac77-d8ea2167b15b" />
+<img width="200" alt="event detail dark" src="https://github.com/user-attachments/assets/337684f7-1567-434d-9426-28c5a54c261e" />
+<img width="200" alt="event updated dark" src="https://github.com/user-attachments/assets/441669ec-3786-4fd7-a023-cfce56e4ba31" />
+<img width="200" alt="add event dark" src="https://github.com/user-attachments/assets/aa3fd79c-dd36-4552-94b6-dfcfde661aef" />
+<img width="200" alt="user delete dark" src="https://github.com/user-attachments/assets/b29a1b11-1fd9-4ff8-a794-903fecc2955d" />
+<img width="200" alt="user edit dark" src="https://github.com/user-attachments/assets/b45eddcf-5b82-4b55-9ac9-6ea3f729f8c7" />
+<img width="200" alt="fav screen dark" src="https://github.com/user-attachments/assets/3fc0a533-5158-4e2f-a6f1-a1fe33076c0e" />
+<img width="200" alt="choose time dark" src="https://github.com/user-attachments/assets/48c274f1-6f50-4352-baf6-aa28911dc542" />
+<img width="200" alt="choose date dark" src="https://github.com/user-attachments/assets/30278b95-b4f8-4370-aff1-2cb4870180d6" />
+<img width="200" alt="category empty dark" src="https://github.com/user-attachments/assets/e9718006-b501-4a31-a574-a95bbca4560c" />
+
+---
+##  Screen Recording 🎬
+
+You can watch a screen recording of the Evently app here:
+
+[Watch Screen Recording](https://drive.google.com/file/d/1PZPBzl-17GCMEp4t2zQhtKdb6QwojHom/view?usp=sharing)
+
