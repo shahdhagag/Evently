@@ -123,4 +123,9 @@ Some key packages used in this project:
 <img width="200" alt="category empty dark" src="https://github.com/user-attachments/assets/e9718006-b501-4a31-a574-a95bbca4560c" />
 
 ---
+##  Screen Recording 🎬
+
+You can watch a screen recording of the Evently app here:
+
+[Watch Screen Recording](https://drive.google.com/file/d/1PZPBzl-17GCMEp4t2zQhtKdb6QwojHom/view?usp=sharing)
 
